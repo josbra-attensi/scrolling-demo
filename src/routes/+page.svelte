@@ -1,15 +1,30 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-
-	type StepSnippet = (i: number) => ReturnType<Snippet>;
+	import { fly } from 'svelte/transition';
 
 	let scrollingContainer = $state<HTMLDivElement | undefined>();
+	let showStepBackgrounds = $state(false);
+	let showToast = $state(false);
+	let gameStarted = $state(false);
 
-	let visibleSteps = $state<StepSnippet[]>([start]);
-	let steps: StepSnippet[] = [start, information, paragraph, trueFalse, multipleChoice, summary];
+	let visibleSteps = $state<Snippet[]>([start]);
+	let steps: Snippet[] = [start, information, paragraph, trueFalse, multipleChoice, summary];
+
+	function startGame() {
+		gameStarted = true;
+		showNextStep(visibleSteps.length);
+		triggerToast();
+	}
 
 	function showNextStep(i: number) {
 		visibleSteps = [...visibleSteps, steps[i + 1]];
+	}
+
+	function triggerToast() {
+		showToast = true;
+		setTimeout(() => {
+			showToast = false;
+		}, 3000);
 	}
 
 	function onscroll() {
@@ -18,10 +33,28 @@
 				scrollingContainer.scrollTop + scrollingContainer.clientHeight >=
 				scrollingContainer.scrollHeight;
 
-			if (atBottom) alert('Bottom of current step!');
+			if (atBottom && gameStarted) {
+				triggerToast();
+				setTimeout(() => showNextStep(visibleSteps.length), 500);
+			}
 		}
 	}
 </script>
+
+<button
+	class="absolute bottom-0 right-0 rounded-lg bg-white p-2 text-xs shadow shadow-black"
+	onclick={() => (showStepBackgrounds = !showStepBackgrounds)}>BG</button
+>
+
+{#if showToast}
+	<div
+		id="toast"
+		class="fixed bottom-4 left-1/2 -translate-x-1/2 rounded-lg bg-white px-4 py-2 shadow"
+		transition:fly={{ y: 200, duration: 500 }}
+	>
+		Next step unlocked
+	</div>
+{/if}
 
 <div
 	id="container"
@@ -30,17 +63,17 @@
 	{onscroll}
 >
 	{#each visibleSteps as stepSnippet, i (i)}
-		{@render stepSnippet(i)}
+		{@render stepSnippet?.()}
 	{/each}
 </div>
 
-{#snippet start(i: number)}
-	{@const visibleStepIndex = visibleSteps.length - 1}
+{#snippet start()}
 	<div
-		class="flex min-h-screen w-screen snap-mandatory snap-start snap-always flex-col items-center justify-center gap-2 bg-red-200"
+		class="flex min-h-dvh w-screen snap-mandatory snap-start snap-always flex-col items-center justify-center gap-2 py-2"
+		class:bg-red-200={showStepBackgrounds}
 		id="start"
 	>
-		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
+		<div class="mt-2 w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
 			<h2 class="text-xl font-black">Start</h2>
 
 			<p>
@@ -50,8 +83,6 @@
 			</p>
 		</div>
 		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
-			<h2 class="text-xl font-black">Start</h2>
-
 			<p>
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque laudantium explicabo nam!
 				Consequatur vero cumque ratione optio? Provident quo quia totam tempora iste dolorem nemo
@@ -59,8 +90,6 @@
 			</p>
 		</div>
 		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
-			<h2 class="text-xl font-black">Start</h2>
-
 			<p>
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque laudantium explicabo nam!
 				Consequatur vero cumque ratione optio? Provident quo quia totam tempora iste dolorem nemo
@@ -68,27 +97,21 @@
 			</p>
 		</div>
 		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
-			<h2 class="text-xl font-black">Start</h2>
-
 			<p>
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque laudantium explicabo nam!
 				Consequatur vero cumque ratione optio? Provident quo quia totam tempora iste dolorem nemo
 				eius repellat, consectetur, distinctio deserunt!
 			</p>
 
-			{#if visibleStepIndex === i}
-				<button class="cursor-pointer text-blue-500 hover:font-bold" onclick={() => showNextStep(i)}
-					>Next</button
-				>
-			{/if}
+			<button class="rounded-lg bg-blue-500 p-2 text-white" onclick={startGame}>Start Game</button>
 		</div>
 	</div>
 {/snippet}
 
-{#snippet information(i: number)}
-	{@const visibleStepIndex = visibleSteps.length - 1}
+{#snippet information()}
 	<div
-		class="flex min-h-screen w-screen snap-mandatory snap-start snap-always flex-col items-center justify-center bg-blue-200"
+		class="mt-2 flex min-h-dvh w-screen snap-mandatory snap-start snap-always flex-col items-center justify-center"
+		class:bg-blue-200={showStepBackgrounds}
 	>
 		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
 			<h2 class="text-xl font-black">Information</h2>
@@ -98,21 +121,14 @@
 				Consequatur vero cumque ratione optio? Provident quo quia totam tempora iste dolorem nemo
 				eius repellat, consectetur, distinctio deserunt!
 			</p>
-
-			{#if visibleStepIndex === i}
-				<button class="cursor-pointer text-blue-500 hover:font-bold" onclick={() => showNextStep(i)}
-					>Next</button
-				>
-			{/if}
 		</div>
 	</div>
 {/snippet}
 
-{#snippet paragraph(i: number)}
-	{@const visibleStepIndex = visibleSteps.length - 1}
+{#snippet paragraph()}
 	<div
-		class="flex min-h-screen w-screen snap-mandatory snap-start snap-always flex-col items-center justify-center bg-green-200"
-		id="paragraph"
+		class="mt-2 flex min-h-dvh w-screen snap-mandatory snap-start snap-always flex-col items-center justify-center"
+		class:bg-green-200={showStepBackgrounds}
 	>
 		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
 			<h2 class="text-xl font-black">Paragraph</h2>
@@ -121,21 +137,14 @@
 				Consequatur vero cumque ratione optio? Provident quo quia totam tempora iste dolorem nemo
 				eius repellat, consectetur, distinctio deserunt!
 			</p>
-
-			{#if visibleStepIndex === i}
-				<button class="cursor-pointer text-blue-500 hover:font-bold" onclick={() => showNextStep(i)}
-					>Next</button
-				>
-			{/if}
 		</div>
 	</div>
 {/snippet}
 
-{#snippet trueFalse(i: number)}
-	{@const visibleStepIndex = visibleSteps.length - 1}
+{#snippet trueFalse()}
 	<div
-		class="flex min-h-screen w-screen snap-mandatory snap-start snap-always flex-col items-center justify-center bg-yellow-200"
-		id="trueFalse"
+		class="mt-2 flex min-h-dvh w-screen snap-mandatory snap-start snap-always flex-col items-center justify-center"
+		class:bg-yellow-200={showStepBackgrounds}
 	>
 		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
 			<h2 class="text-xl font-black">True False</h2>
@@ -144,21 +153,14 @@
 				Consequatur vero cumque ratione optio? Provident quo quia totam tempora iste dolorem nemo
 				eius repellat, consectetur, distinctio deserunt!
 			</p>
-
-			{#if visibleStepIndex === i}
-				<button class="cursor-pointer text-blue-500 hover:font-bold" onclick={() => showNextStep(i)}
-					>Next</button
-				>
-			{/if}
 		</div>
 	</div>
 {/snippet}
 
-{#snippet multipleChoice(i: number)}
-	{@const visibleStepIndex = visibleSteps.length - 1}
+{#snippet multipleChoice()}
 	<div
-		class="flex min-h-screen w-screen snap-mandatory snap-start snap-always flex-col items-center justify-center bg-purple-200"
-		id="multipleChoice"
+		class="mt-2 flex min-h-dvh w-screen snap-mandatory snap-start snap-always flex-col items-center justify-center gap-4"
+		class:bg-purple-200={showStepBackgrounds}
 	>
 		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
 			<h2 class="text-xl font-black">Multiple Choice</h2>
@@ -167,34 +169,27 @@
 				Consequatur vero cumque ratione optio? Provident quo quia totam tempora iste dolorem nemo
 				eius repellat, consectetur, distinctio deserunt!
 			</p>
-
-			{#if visibleStepIndex === i}
-				<button class="cursor-pointer text-blue-500 hover:font-bold" onclick={() => showNextStep(i)}
-					>Next</button
-				>
-			{/if}
-			>
 		</div>
 
-		<div class="flex flex-col gap-4">
-			<div class="mx-auto bg-white p-4">Option 1</div>
-			<div class="mx-auto bg-white p-4">Option 2</div>
-			<div class="mx-auto bg-white p-4">Option 3</div>
-			<div class="mx-auto bg-white p-4">Option 4</div>
-			<div class="mx-auto bg-white p-4">Option 5</div>
-			<div class="mx-auto bg-white p-4">Option 5</div>
-			<div class="mx-auto bg-white p-4">Option 5</div>
-			<div class="mx-auto bg-white p-4">Option 5</div>
-			<div class="mx-auto bg-white p-4">Option 5</div>
-			<div class="mx-auto bg-white p-4">Option 5</div>
+		<div class="flex w-5/6 flex-col gap-4">
+			<div class="rounded-sm bg-white p-4">Option 1</div>
+			<div class="rounded-sm bg-white p-4">Option 2</div>
+			<div class="rounded-sm bg-white p-4">Option 3</div>
+			<div class="rounded-sm bg-white p-4">Option 4</div>
+			<div class="rounded-sm bg-white p-4">Option 5</div>
+			<div class="rounded-sm bg-white p-4">Option 6</div>
+			<div class="rounded-sm bg-white p-4">Option 7</div>
+			<div class="rounded-sm bg-white p-4">Option 8</div>
+			<div class="rounded-sm bg-white p-4">Option 9</div>
+			<div class="rounded-sm bg-white p-4">Option 10</div>
 		</div>
 	</div>
 {/snippet}
 
 {#snippet summary()}
 	<div
-		class="flex min-h-screen w-screen snap-mandatory snap-start snap-always flex-col items-center justify-center bg-gray-200"
-		id="summary"
+		class="mt-2 flex min-h-dvh w-screen snap-mandatory snap-start snap-always flex-col items-center justify-center"
+		class:bg-gray-200={showStepBackgrounds}
 	>
 		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
 			<h2 class="text-xl font-black">Summary</h2>
