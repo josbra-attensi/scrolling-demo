@@ -41,10 +41,10 @@
 	}
 </script>
 
-<button
-	class="absolute bottom-0 right-0 rounded-lg bg-white p-2 text-xs shadow shadow-black"
-	onclick={() => (showStepBackgrounds = !showStepBackgrounds)}>BG</button
->
+<!-- <button -->
+<!-- 	class="absolute bottom-0 right-0 rounded-lg bg-white p-2 text-xs shadow shadow-black" -->
+<!-- 	onclick={() => (showStepBackgrounds = !showStepBackgrounds)}>BG</button -->
+<!-- > -->
 
 {#if showToast}
 	<div
@@ -58,7 +58,7 @@
 
 <div
 	id="container"
-	class="max-h-screen snap-y overflow-y-auto scroll-smooth"
+	class="max-h-screen w-full snap-y overflow-y-auto scroll-smooth"
 	bind:this={scrollingContainer}
 	{onscroll}
 >
@@ -69,7 +69,7 @@
 
 {#snippet start()}
 	<div
-		class="flex min-h-dvh w-screen snap-mandatory snap-start flex-col items-center justify-center gap-2 py-2"
+		class="flex min-h-dvh w-full snap-mandatory snap-start flex-col items-center justify-center gap-2 py-2"
 		class:bg-red-200={showStepBackgrounds}
 		id="start"
 	>
@@ -110,7 +110,7 @@
 
 {#snippet information()}
 	<div
-		class="mt-2 flex min-h-dvh w-screen snap-mandatory snap-start flex-col items-center justify-center"
+		class="mt-2 flex min-h-dvh w-full snap-mandatory snap-start flex-col items-center justify-center"
 		class:bg-blue-200={showStepBackgrounds}
 	>
 		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
@@ -127,7 +127,7 @@
 
 {#snippet paragraph()}
 	<div
-		class="mt-2 flex min-h-dvh w-screen snap-mandatory snap-start flex-col items-center justify-center"
+		class="mt-2 flex min-h-dvh w-full snap-mandatory snap-start flex-col items-center justify-center"
 		class:bg-green-200={showStepBackgrounds}
 	>
 		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
@@ -143,7 +143,7 @@
 
 {#snippet trueFalse()}
 	<div
-		class="mt-2 flex min-h-dvh w-screen snap-mandatory snap-start flex-col items-center justify-center"
+		class="mt-2 flex min-h-dvh w-full snap-mandatory snap-start flex-col items-center justify-center"
 		class:bg-yellow-200={showStepBackgrounds}
 	>
 		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
@@ -159,7 +159,7 @@
 
 {#snippet multipleChoice()}
 	<div
-		class="mt-2 flex min-h-dvh w-screen snap-mandatory snap-start flex-col items-center justify-center gap-4"
+		class="mt-2 flex min-h-dvh w-full snap-mandatory snap-start flex-col items-center justify-center gap-4"
 		class:bg-purple-200={showStepBackgrounds}
 	>
 		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">
@@ -188,7 +188,7 @@
 
 {#snippet summary()}
 	<div
-		class="mt-2 flex min-h-dvh w-screen snap-mandatory snap-start flex-col items-center justify-center"
+		class="mt-2 flex min-h-dvh w-full snap-mandatory snap-start flex-col items-center justify-center"
 		class:bg-gray-200={showStepBackgrounds}
 	>
 		<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">

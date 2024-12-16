@@ -3,6 +3,6 @@
 	let { children } = $props();
 </script>
 
-<div class="min-h-screen w-screen bg-gradient-to-t from-indigo-400 to-indigo-200 bg-fixed">
+<div class="min-h-dvh w-full bg-gradient-to-t from-indigo-400 to-indigo-200 bg-fixed">
 	{@render children()}
 </div>
