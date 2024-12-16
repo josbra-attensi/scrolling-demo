@@ -3,7 +3,7 @@
 	import { fly } from 'svelte/transition';
 
 	let scrollingContainer = $state<HTMLDivElement | undefined>();
-	let showStepBackgrounds = $state(false);
+	let showStepBackgrounds = $state(true);
 	let showToast = $state(false);
 	let gameStarted = $state(false);
 
