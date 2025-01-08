@@ -5,6 +5,7 @@
 
 	import Info from './Info.svelte';
 	import MultipleChoice from './MultipleChoice.svelte';
+	import MultipleChoiceMany from './MultipleChoiceMany.svelte';
 	import Paragraph from './Paragraph.svelte';
 	import RichText from './RichText.svelte';
 	import Intro from './Intro.svelte';
@@ -13,7 +14,9 @@
 	import Navigation from './Navigation.svelte';
 
 	// TODO: Can do a better job scoping this in real implementation
-	type StepComponent = Component<{ onStepComplete: () => void }> | Component;
+	type StepComponent =
+		| Component<{ onStepComplete: () => void; tooManyOptions?: boolean }>
+		| Component;
 
 	type StepGroup = {
 		interactive: boolean;
@@ -25,6 +28,7 @@
 		{ steps: [RichText, Info, Paragraph], interactive: false },
 		{ steps: [MultipleChoice], interactive: true },
 		{ steps: [RichText], interactive: false },
+		{ steps: [MultipleChoiceMany], interactive: true },
 		{ steps: [TrueFalse], interactive: true },
 		{ steps: [Summary], interactive: true }
 	];
@@ -37,9 +41,7 @@
 	};
 </script>
 
-<div
-	class="mx-auto flex min-h-screen w-[clamp(16rem,90vw,70rem)] flex-col gap-8 overflow-hidden px-6"
->
+<div class="mx-auto flex min-h-screen w-[clamp(16rem,90vw,70rem)] flex-col gap-8 overflow-hidden">
 	{#key currentStep}
 		<div
 			in:fly={{ y: '100%', easing: cubicOut, delay: 500 }}

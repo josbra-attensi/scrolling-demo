@@ -14,10 +14,10 @@
 	</Card>
 {/snippet}
 
-<div class="flex min-h-screen flex-col justify-center">
-	<div class="w-full text-center">
+<div class="flex max-h-screen min-h-screen w-full flex-col justify-center">
+	<div class="w-full overflow-y-auto text-center">
 		<Card class="mx-auto w-fit">
-			<h2 class="text-3xl">Multiple Choice Step</h2>
+			<h2 class="text-3xl">Many Multiple Choice Step</h2>
 		</Card>
 
 		<div class="mt-4 flex flex-col gap-4">
@@ -25,6 +25,10 @@
 			{@render button(2)}
 			{@render button(3)}
 			{@render button(4)}
+			{@render button(5)}
+			{@render button(6)}
+			{@render button(7)}
+			{@render button(8)}
 		</div>
 	</div>
 </div>
