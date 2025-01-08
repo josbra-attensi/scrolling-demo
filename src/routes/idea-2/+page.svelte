@@ -1,5 +1,7 @@
 <script lang="ts">
-	import type { Component } from 'svelte';
+	import { type Component } from 'svelte';
+	import { fly } from 'svelte/transition';
+	import { cubicOut, expoIn } from 'svelte/easing';
 
 	import Info from './Info.svelte';
 	import MultipleChoice from './MultipleChoice.svelte';
@@ -35,11 +37,20 @@
 	};
 </script>
 
-<div class="mx-auto flex w-[clamp(16rem,90vw,70rem)] flex-col gap-8 px-6">
-	{#each currentStepGroup.steps as StepComponent}
-		<StepComponent onStepComplete={goToNextStep} />
-	{/each}
-	{#if !currentStepGroup.interactive}
-		<Navigation type="Bottom" onStepComplete={goToNextStep} />
-	{/if}
+<div
+	class="mx-auto flex min-h-screen w-[clamp(16rem,90vw,70rem)] flex-col gap-8 overflow-hidden px-6"
+>
+	{#key currentStep}
+		<div
+			in:fly={{ y: '100%', easing: cubicOut, delay: 500 }}
+			out:fly={{ y: '-100%', easing: expoIn }}
+		>
+			{#each currentStepGroup.steps as StepComponent}
+				<StepComponent onStepComplete={goToNextStep} />
+			{/each}
+		</div>
+		{#if !currentStepGroup.interactive}
+			<Navigation type="Bottom" onStepComplete={goToNextStep} />
+		{/if}
+	{/key}
 </div>
