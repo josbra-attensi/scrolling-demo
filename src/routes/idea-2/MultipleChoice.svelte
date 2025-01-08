@@ -15,7 +15,7 @@
 		</Card>
 
 		<div class="mt-4 flex flex-col gap-4">
-			<Card><button onclick={onStepComplete}>Answer 1</button></Card>
+			<Card><button class="h-full w-full" onclick={onStepComplete}>Answer 1</button></Card>
 
 			<Card><button onclick={onStepComplete}>Answer 2</button></Card>
 
