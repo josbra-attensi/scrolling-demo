@@ -86,9 +86,10 @@
 		<h2 class="text-xl font-black">Start</h2>
 
 		<p>
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque laudantium explicabo nam!
-			Consequatur vero cumque ratione optio? Provident quo quia totam tempora iste dolorem nemo eius
-			repellat, consectetur, distinctio deserunt!
+			This is demo 1, the old scrolling behaviour. <a
+				href="/idea-2"
+				class="cursor-pointer text-blue-500 underline">Click here</a
+			> go to demo 2
 		</p>
 	</div>
 	<div class="w-5/6 rounded-md border border-gray-700 bg-white p-5 md:w-1/2">

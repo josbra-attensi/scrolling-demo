@@ -13,9 +13,12 @@
 		<h2 class="mb-6 text-3xl">Introduction</h2>
 
 		<p class="mb-6">
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit obcaecati nobis animi ab
-			perspiciatis, asperiores totam error, blanditiis cumque, rem minus sunt reiciendis vitae.
-			Deleniti delectus inventore dolorem officia aliquid.
+			This demo works by grouping together non-interactive sequential steps, and using interactive
+			steps as transition points.
+		</p>
+		<p class="mb-6">
+			The demo lets you navigate forwards, backwards navigation is to be discussed due to some
+			limitations if we place the button at the top. This should be explored separately.
 		</p>
 
 		<button
