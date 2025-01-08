@@ -14,7 +14,7 @@
 	</Card>
 {/snippet}
 
-<div class="flex min-h-screen flex-col justify-center">
+<div class="flex min-h-screen flex-col justify-center py-8">
 	<div class="w-full text-center">
 		<Card class="mx-auto w-fit">
 			<h2 class="text-3xl">Multiple Choice Step</h2>

@@ -2,7 +2,7 @@
 	import Card from './Card.svelte';
 </script>
 
-<div class="flex min-h-screen flex-col justify-center">
+<div class="flex min-h-screen flex-col justify-center py-8">
 	<Card>
 		<h2 class="mb-6 text-3xl">Paragraph Step</h2>
 
@@ -13,4 +13,3 @@
 		</p>
 	</Card>
 </div>
-
