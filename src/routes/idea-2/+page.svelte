@@ -39,6 +39,10 @@
 	const goToNextStep = () => {
 		currentStep += 1;
 	};
+
+	const goToStartStep = () => {
+		currentStep = 0;
+	};
 </script>
 
 <div class="mx-auto flex min-h-screen w-[clamp(16rem,90vw,70rem)] flex-col gap-8 overflow-hidden">
@@ -48,7 +52,7 @@
 			out:fly={{ y: '-100%', easing: expoIn }}
 		>
 			{#each currentStepGroup.steps as StepComponent}
-				<StepComponent onStepComplete={goToNextStep} />
+				<StepComponent onStepComplete={StepComponent === Summary ? goToStartStep : goToNextStep} />
 			{/each}
 		</div>
 		{#if !currentStepGroup.interactive}

@@ -1,5 +1,11 @@
-<script>
+<script lang="ts">
 	import Card from './Card.svelte';
+
+	interface Props {
+		onStepComplete: () => void;
+	}
+
+	const { onStepComplete }: Props = $props();
 </script>
 
 <div class="flex min-h-screen flex-col justify-center">
@@ -14,7 +20,7 @@
 
 		<button
 			class="cursor-pointer rounded-xl border border-blue-700 bg-blue-600 px-2 py-1.5 text-white"
-			>Submit Answers!</button
+			onclick={onStepComplete}>Play again!</button
 		>
 	</Card>
 </div>
