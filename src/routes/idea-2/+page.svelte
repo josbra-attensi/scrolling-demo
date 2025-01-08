@@ -28,8 +28,8 @@
 		{ steps: [RichText, Info, Paragraph], interactive: false },
 		{ steps: [MultipleChoice], interactive: true },
 		{ steps: [RichText], interactive: false },
-		{ steps: [MultipleChoiceMany], interactive: true },
 		{ steps: [TrueFalse], interactive: true },
+		{ steps: [MultipleChoiceMany], interactive: true },
 		{ steps: [Summary], interactive: true }
 	];
 
