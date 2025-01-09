@@ -7,7 +7,7 @@
 	const { type: navigationPosition, onStepComplete }: Props = $props();
 </script>
 
-<div class="flex justify-center">
+<div class="flex snap-start snap-always justify-center">
 	<button
 		class="h-fit rounded-tl-full rounded-tr-full bg-orange-400 px-6 pt-4"
 		class:mb-auto={navigationPosition === 'Top'}

@@ -2,7 +2,9 @@
 	import Card from './Card.svelte';
 </script>
 
-<div class="mx-auto flex min-h-screen w-[clamp(16rem,90vw,70rem)] flex-col justify-center py-8">
+<div
+	class="mx-auto flex min-h-screen w-[clamp(16rem,90vw,70rem)] snap-start flex-col justify-center py-8"
+>
 	<Card class="flex flex-col gap-4">
 		<h2 class="text-3xl">Long Rich Text Step</h2>
 

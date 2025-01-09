@@ -51,7 +51,7 @@
 		<div
 			in:fly={{ y: '100%', easing: cubicOut, delay: 500 }}
 			out:fly={{ y: '-100%', easing: expoIn }}
-			class="min-h-screen overflow-y-auto"
+			class="min-h-screen snap-y snap-proximity overflow-y-auto"
 		>
 			{#each currentStepGroup.steps as StepComponent}
 				<StepComponent onStepComplete={StepComponent === Summary ? goToStartStep : goToNextStep} />
