@@ -69,7 +69,7 @@
 
 <div
 	id="container"
-	class="max-h-screen w-full snap-y overflow-y-auto scroll-smooth"
+	class="max-h-screen w-full snap-y snap-mandatory overflow-y-auto scroll-smooth"
 	bind:this={scrollingContainer}
 	{onscroll}
 >
