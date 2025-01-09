@@ -2,7 +2,7 @@
 	import Card from './Card.svelte';
 </script>
 
-<div class="ter flex min-h-screen flex-col py-8">
+<div class="flex min-h-screen flex-col justify-center py-8">
 	<Card>
 		<h2 class="mb-6 text-3xl">Information Step</h2>
 
