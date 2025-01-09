@@ -8,6 +8,7 @@
 	import MultipleChoiceMany from './MultipleChoiceMany.svelte';
 	import Paragraph from './Paragraph.svelte';
 	import RichText from './RichText.svelte';
+	import RichTextLong from './RichTextLong.svelte';
 	import Intro from './Intro.svelte';
 	import TrueFalse from './TrueFalse.svelte';
 	import Summary from './Summary.svelte';
@@ -27,7 +28,7 @@
 		{ steps: [Intro], interactive: true },
 		{ steps: [RichText, Info, Paragraph], interactive: false },
 		{ steps: [MultipleChoice], interactive: true },
-		{ steps: [RichText], interactive: false },
+		{ steps: [RichTextLong, RichText], interactive: false },
 		{ steps: [TrueFalse], interactive: true },
 		{ steps: [MultipleChoiceMany], interactive: true },
 		{ steps: [Summary], interactive: true }
