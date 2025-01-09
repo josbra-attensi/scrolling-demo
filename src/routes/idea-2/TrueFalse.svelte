@@ -8,7 +8,7 @@
 	const { onStepComplete }: Props = $props();
 </script>
 
-<div class="flex min-h-screen flex-col justify-center py-8">
+<div class="mx-auto flex min-h-screen w-[clamp(16rem,90vw,70rem)] flex-col justify-center py-8">
 	<div class="w-full text-center">
 		<Card class="mx-auto w-fit">
 			<h2 class="text-3xl">True False Step</h2>
