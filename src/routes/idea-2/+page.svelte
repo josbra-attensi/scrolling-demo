@@ -47,12 +47,9 @@
 <!-- <div class="min-h-dvh w-full bg-gradient-to-t from-indigo-400 to-indigo-200 bg-fixed"> -->
 
 <div
-	class="grid-layout flex max-h-screen min-h-screen w-full flex-col bg-gradient-to-t from-indigo-400 to-indigo-200 bg-fixed"
+	class="grid-layout max-h-screen min-h-screen w-full bg-gradient-to-t from-indigo-400 to-indigo-200 bg-fixed"
 >
-	<div
-		id="header"
-		class="fast-header h-[var(--header-height)] w-full flex-none border border-black"
-	>
+	<div id="header" class="fast-header h-[var(--header-height)] w-full bg-pink-200">
 		<div class="h-12 w-fit bg-green-200">Header</div>
 	</div>
 	{#key currentStep}
@@ -70,10 +67,7 @@
 			{/if}
 		</div>
 	{/key}
-	<div
-		id="footer"
-		class="fast-footer h-[var(--footer-height)] w-full flex-none border border-black"
-	>
+	<div id="footer" class="fast-footer h-[var(--footer-height)] w-full bg-pink-200">
 		<div class="h-12 w-fit bg-green-200">Footer</div>
 	</div>
 </div>
