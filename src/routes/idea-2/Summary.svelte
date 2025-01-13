@@ -8,7 +8,7 @@
 	const { onStepComplete }: Props = $props();
 </script>
 
-<div class="mx-auto flex min-h-full w-[clamp(16rem,90vw,70rem)] flex-col justify-center py-8">
+<div class="justify-center-safe mx-auto flex min-h-full w-[clamp(16rem,90vw,70rem)] flex-col py-8">
 	<Card>
 		<h2 class="mb-6 text-3xl">Summary</h2>
 
