@@ -36,6 +36,7 @@
 
 	let currentStep = $state(0);
 	let currentStepGroup = $derived(stepGroups[currentStep]);
+	let correctPercentage = $derived(Math.round((currentStep / stepGroups.length) * 100));
 
 	const goToNextStep = () => {
 		currentStep += 1;
@@ -49,7 +50,7 @@
 <div
 	class="grid-layout max-h-dvh min-h-dvh w-full bg-gradient-to-t from-indigo-400 to-indigo-200 bg-fixed"
 >
-	<Header />
+	<Header {currentStep} totalSteps={stepGroups.length} {correctPercentage} />
 	{#key currentStep}
 		<div
 			in:fly={{ y: '100%', easing: cubicOut, delay: 500 }}
