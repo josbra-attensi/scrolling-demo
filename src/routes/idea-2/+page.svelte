@@ -56,7 +56,7 @@
 		<div
 			in:fly={{ y: '100%', easing: cubicOut, delay: 500 }}
 			out:fly={{ y: '-100%', easing: expoIn }}
-			class="flex h-[var(--step-height)] snap-y snap-mandatory flex-col overflow-y-auto"
+			class="flex h-[var(--step-height)] w-[100vw] snap-y snap-mandatory flex-col overflow-y-auto"
 		>
 			{#each currentStepGroup.steps as StepComponent}
 				<StepComponent onStepComplete={StepComponent === Summary ? goToStartStep : goToNextStep} />
