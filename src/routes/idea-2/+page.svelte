@@ -47,16 +47,19 @@
 <!-- <div class="min-h-dvh w-full bg-gradient-to-t from-indigo-400 to-indigo-200 bg-fixed"> -->
 
 <div
-	class="flex max-h-screen min-h-screen w-full flex-col bg-gradient-to-t from-indigo-400 to-indigo-200 bg-fixed"
+	class="grid-layout flex max-h-screen min-h-screen w-full flex-col bg-gradient-to-t from-indigo-400 to-indigo-200 bg-fixed"
 >
-	<div id="header" class="h-[var(--header-height)] w-full flex-none border border-black">
+	<div
+		id="header"
+		class="fast-header h-[var(--header-height)] w-full flex-none border border-black"
+	>
 		<div class="h-12 w-fit bg-green-200">Header</div>
 	</div>
 	{#key currentStep}
 		<div
 			in:fly={{ y: '100%', easing: cubicOut, delay: 500 }}
 			out:fly={{ y: '-100%', easing: expoIn }}
-			class="flex h-[var(--step-height)] w-[100vw] snap-y snap-mandatory flex-col overflow-y-auto"
+			class="fast-content flex h-[var(--step-height)] w-[100vw] snap-y snap-mandatory flex-col overflow-y-auto"
 		>
 			{#each currentStepGroup.steps as StepComponent}
 				<StepComponent onStepComplete={StepComponent === Summary ? goToStartStep : goToNextStep} />
@@ -67,7 +70,10 @@
 			{/if}
 		</div>
 	{/key}
-	<div id="footer" class="h-[var(--footer-height)] w-full flex-none border border-black">
+	<div
+		id="footer"
+		class="fast-footer h-[var(--footer-height)] w-full flex-none border border-black"
+	>
 		<div class="h-12 w-fit bg-green-200">Footer</div>
 	</div>
 </div>
@@ -77,5 +83,23 @@
 		--header-height: 10vh;
 		--footer-height: 10vh;
 		--step-height: calc(100vh - var(--header-height) - var(--footer-height));
+	}
+
+	.grid-layout {
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		min-height: 100dvh;
+	}
+
+	.fast-header {
+		grid-row: 1;
+	}
+
+	.fast-content {
+		grid-row: 2;
+	}
+
+	.fast-footer {
+		grid-row: 3;
 	}
 </style>
