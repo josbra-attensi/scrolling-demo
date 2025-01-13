@@ -14,13 +14,13 @@
 	</Card>
 {/snippet}
 
-<div class="mx-auto flex min-h-screen w-[clamp(16rem,90vw,70rem)] flex-col justify-center py-8">
-	<div class="w-full overflow-y-auto text-center">
+<div class="justify-center-safe mx-auto flex min-h-full w-[clamp(16rem,90vw,70rem)] flex-col">
+	<div class="max-h-full w-full pt-4 text-center">
 		<Card class="mx-auto w-fit">
 			<h2 class="text-3xl">Many Multiple Choice Step</h2>
 		</Card>
 
-		<div class="mt-4 flex flex-col gap-4">
+		<div class="mt-4 flex flex-col gap-4 overflow-y-auto pb-4">
 			{@render button(1)}
 			{@render button(2)}
 			{@render button(3)}

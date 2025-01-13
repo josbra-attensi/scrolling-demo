@@ -15,9 +15,7 @@
 	import Navigation from './Navigation.svelte';
 
 	// TODO: Can do a better job scoping this in real implementation
-	type StepComponent =
-		| Component<{ onStepComplete: () => void; tooManyOptions?: boolean }>
-		| Component;
+	type StepComponent = Component<{ onStepComplete: () => void }> | Component;
 
 	type StepGroup = {
 		interactive: boolean;
@@ -46,12 +44,19 @@
 	};
 </script>
 
-<div class="flex max-h-screen min-h-screen w-full flex-col gap-8 overflow-hidden">
+<!-- <div class="min-h-dvh w-full bg-gradient-to-t from-indigo-400 to-indigo-200 bg-fixed"> -->
+
+<div
+	class="flex max-h-screen min-h-screen w-full flex-col bg-gradient-to-t from-indigo-400 to-indigo-200 bg-fixed"
+>
+	<div id="header" class="h-[var(--header-height)] w-full flex-none border border-black">
+		<div class="h-12 w-fit bg-green-200">Header</div>
+	</div>
 	{#key currentStep}
 		<div
 			in:fly={{ y: '100%', easing: cubicOut, delay: 500 }}
 			out:fly={{ y: '-100%', easing: expoIn }}
-			class="min-h-screen snap-y snap-mandatory overflow-y-auto"
+			class="flex h-[var(--step-height)] snap-y snap-mandatory flex-col overflow-y-auto"
 		>
 			{#each currentStepGroup.steps as StepComponent}
 				<StepComponent onStepComplete={StepComponent === Summary ? goToStartStep : goToNextStep} />
@@ -62,4 +67,15 @@
 			{/if}
 		</div>
 	{/key}
+	<div id="footer" class="h-[var(--footer-height)] w-full flex-none border border-black">
+		<div class="h-12 w-fit bg-green-200">Footer</div>
+	</div>
 </div>
+
+<style>
+	:root {
+		--header-height: 10vh;
+		--footer-height: 10vh;
+		--step-height: calc(100vh - var(--header-height) - var(--footer-height));
+	}
+</style>

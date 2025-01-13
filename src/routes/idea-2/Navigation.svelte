@@ -9,7 +9,7 @@
 
 <div class="flex snap-start snap-always justify-center">
 	<button
-		class="h-fit rounded-tl-full rounded-tr-full bg-orange-400 px-6 pt-4"
+		class="mb-4 rounded-full border border-black bg-white p-2"
 		class:mb-auto={navigationPosition === 'Top'}
 		class:mt-auto={navigationPosition === 'Bottom'}
 		onclick={onStepComplete}

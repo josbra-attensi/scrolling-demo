@@ -67,18 +67,20 @@
 	</div>
 {/if}
 
-<div
-	id="container"
-	class="max-h-screen w-full snap-y snap-mandatory overflow-y-auto scroll-smooth"
-	bind:this={scrollingContainer}
-	{onscroll}
->
-	<div class="sticky top-0 h-[100px]">Testing</div>
-	{#each visibleSteps as stepSnippet, i (i)}
-		<ScrollItem stepNumber={i} {showStepBackgrounds} bgColor="bg-red-200 bind:this={stepRefs[i]}">
-			{@render stepSnippet?.()}
-		</ScrollItem>
-	{/each}
+<div class="min-h-dvh w-full bg-gradient-to-t from-indigo-400 to-indigo-200 bg-fixed">
+	<div
+		id="container"
+		class="max-h-screen w-full snap-y snap-mandatory overflow-y-auto scroll-smooth"
+		bind:this={scrollingContainer}
+		{onscroll}
+	>
+		<div class="sticky top-0 h-[100px]">Testing</div>
+		{#each visibleSteps as stepSnippet, i (i)}
+			<ScrollItem stepNumber={i} {showStepBackgrounds} bgColor="bg-red-200 bind:this={stepRefs[i]}">
+				{@render stepSnippet?.()}
+			</ScrollItem>
+		{/each}
+	</div>
 </div>
 
 {#snippet start()}

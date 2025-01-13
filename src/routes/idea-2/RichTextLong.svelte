@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="mx-auto flex min-h-screen w-[clamp(16rem,90vw,70rem)] snap-start flex-col justify-center py-8"
+	class="justify-center-safe mx-auto flex min-h-[var(--step-height)] w-[clamp(16rem,90vw,70rem)] snap-start flex-col py-8"
 >
 	<Card class="flex flex-col gap-4">
 		<h2 class="text-3xl">Long Rich Text Step</h2>
