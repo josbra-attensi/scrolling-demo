@@ -1,5 +1,5 @@
-<div id="footer" class="fast-footer w-full bg-pink-200">
-	<div class="h-12 w-fit bg-green-200">Footer</div>
+<div id="footer" class="fast-footer w-full">
+	<div class="mx-auto my-2 w-fit rounded-full bg-white px-4 py-2">Select X to continue</div>
 </div>
 
 <style>
