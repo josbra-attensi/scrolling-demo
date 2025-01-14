@@ -19,12 +19,20 @@
 		<div class="flex w-fit gap-2 rounded-l-full bg-white py-2 pl-6 pr-4">
 			<div>
 				<div class="font-bold">{currentStep}/{totalSteps}</div>
-				<div class="text-xs text-slate-500">Steps</div>
+				<div
+					class="text-xs text-slate-500 a11y-zoom-level-2:text-[10px] a11y-zoom-level-1:text-[12px]"
+				>
+					Steps
+				</div>
 			</div>
 			<div class="w-[2px] bg-gradient-to-b from-slate-100 to-slate-300"></div>
 			<div>
 				<div class="font-bold">{correctPercentage}%</div>
-				<div class="text-xs text-slate-500">Correct</div>
+				<div
+					class="text-xs text-slate-500 a11y-zoom-level-2:text-[10px] a11y-zoom-level-1:text-[12px]"
+				>
+					Correct
+				</div>
 			</div>
 		</div>
 	</div>
