@@ -5,15 +5,19 @@
 		currentStep: number;
 		totalSteps: number;
 		correctPercentage: number;
+		showBackButton: boolean;
 		onStepComplete: () => void;
 	}
 
-	let { currentStep, totalSteps, correctPercentage, onStepComplete }: Props = $props();
+	let { currentStep, totalSteps, correctPercentage, showBackButton, onStepComplete }: Props =
+		$props();
 </script>
 
 <div id="header" class="fast-header grid w-full py-2">
 	<div class="ml-6 flex self-center">
-		<Navigation type="Top" {onStepComplete} />
+		{#if showBackButton}
+			<Navigation type="Top" {onStepComplete} />
+		{/if}
 	</div>
 	<div class="flex justify-end">
 		<div class="flex w-fit gap-2 rounded-l-full bg-white py-2 pl-6 pr-4">

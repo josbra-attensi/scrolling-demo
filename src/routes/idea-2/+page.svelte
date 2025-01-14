@@ -37,6 +37,7 @@
 	let currentStep = $state(0);
 	let currentStepGroup = $derived(stepGroups[currentStep]);
 	let correctPercentage = $derived(Math.round((currentStep / stepGroups.length) * 100));
+	let showBackButton = $derived(currentStep > 0);
 
 	const goToPreviousStep = () => {
 		if (currentStep === 0) return;
@@ -60,6 +61,7 @@
 		{currentStep}
 		totalSteps={stepGroups.length}
 		{correctPercentage}
+		{showBackButton}
 		onStepComplete={goToPreviousStep}
 	/>
 	{#key currentStep}
