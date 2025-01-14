@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Card from './Card.svelte';
+	import Screen from './Screen.svelte';
+	import Title from './Title.svelte';
 
 	interface Props {
 		onStepComplete: () => void;
@@ -8,10 +10,10 @@
 	const { onStepComplete }: Props = $props();
 </script>
 
-<div class="justify-center-safe mx-auto flex min-h-full w-[clamp(16rem,90vw,70rem)] flex-col py-8">
+<Screen>
 	<div class="w-full text-center">
 		<Card class="mx-auto w-fit">
-			<h2 class="text-3xl">True False Step</h2>
+			<Title>True False Step</Title>
 		</Card>
 
 		<div class="mt-4 w-full">
@@ -27,4 +29,4 @@
 			<Card class="w-20"><button onclick={onStepComplete}>True</button></Card>
 		</div>
 	</div>
-</div>
+</Screen>

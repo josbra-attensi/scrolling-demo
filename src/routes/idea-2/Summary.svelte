@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Card from './Card.svelte';
+	import Screen from './Screen.svelte';
+	import Title from './Title.svelte';
 
 	interface Props {
 		onStepComplete: () => void;
@@ -8,9 +10,9 @@
 	const { onStepComplete }: Props = $props();
 </script>
 
-<div class="justify-center-safe mx-auto flex min-h-full w-[clamp(16rem,90vw,70rem)] flex-col py-8">
+<Screen>
 	<Card>
-		<h2 class="mb-6 text-3xl">Summary</h2>
+		<Title bottomMargin>Summary</Title>
 
 		<p class="mb-6">
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit obcaecati nobis animi ab
@@ -23,4 +25,4 @@
 			onclick={onStepComplete}>Play again!</button
 		>
 	</Card>
-</div>
+</Screen>

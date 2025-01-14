@@ -70,12 +70,6 @@
 </div>
 
 <style>
-	:root {
-		--header-height: 10vh;
-		--footer-height: 10vh;
-		--step-height: calc(100vh - var(--header-height) - var(--footer-height));
-	}
-
 	.grid-layout {
 		display: grid;
 		grid-template-rows: auto 1fr auto;

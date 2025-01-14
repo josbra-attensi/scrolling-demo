@@ -1,12 +1,12 @@
 <script>
 	import Card from './Card.svelte';
+	import Screen from './Screen.svelte';
+	import Title from './Title.svelte';
 </script>
 
-<div
-	class="justify-center-safe mx-auto flex min-h-full w-[clamp(16rem,90vw,70rem)] snap-start flex-col py-8"
->
+<Screen snapEnabled>
 	<Card class="flex flex-col gap-4">
-		<h2 class="text-3xl">Long Rich Text Step</h2>
+		<Title>Long Rich Text Step</Title>
 
 		<p>
 			Lorem <strong>ipsum</strong> dolor sit
@@ -44,4 +44,4 @@
 			vitae 🥳. Deleniti delectus inventore dolorem officia aliquid.
 		</p>
 	</Card>
-</div>
+</Screen>

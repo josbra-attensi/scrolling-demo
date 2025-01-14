@@ -1,12 +1,12 @@
 <script>
 	import Card from './Card.svelte';
+	import Screen from './Screen.svelte';
+	import Title from './Title.svelte';
 </script>
 
-<div
-	class="justify-center-safe mx-auto flex min-h-full w-[clamp(16rem,90vw,70rem)] snap-start flex-col py-8"
->
+<Screen snapEnabled>
 	<Card>
-		<h2 class="mb-6 text-3xl">Information Step</h2>
+		<Title bottomMargin>Information Step</Title>
 
 		<p>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam debitis asperiores pariatur
@@ -14,4 +14,4 @@
 			harum sed perferendis laboriosam, porro, magni provident.
 		</p>
 	</Card>
-</div>
+</Screen>

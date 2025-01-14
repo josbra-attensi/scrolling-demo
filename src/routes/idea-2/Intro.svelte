@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Card from './Card.svelte';
+	import Screen from './Screen.svelte';
+	import Title from './Title.svelte';
 
 	interface Props {
 		onStepComplete: () => void;
@@ -8,11 +10,9 @@
 	const { onStepComplete }: Props = $props();
 </script>
 
-<div
-	class="justify-center-safe mx-auto flex min-h-full w-[clamp(16rem,90vw,70rem)] grow flex-col py-8"
->
+<Screen>
 	<Card>
-		<h2 class="mb-6 text-3xl">Introduction</h2>
+		<Title bottomMargin>Introduction</Title>
 
 		<p class="mb-6">
 			This demo works by grouping together non-interactive sequential steps, and using interactive
@@ -28,4 +28,4 @@
 			onclick={onStepComplete}>Start!</button
 		>
 	</Card>
-</div>
+</Screen>

@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Card from './Card.svelte';
+	import Screen from './Screen.svelte';
+	import Title from './Title.svelte';
 
 	interface Props {
 		onStepComplete: () => void;
@@ -14,10 +16,10 @@
 	</Card>
 {/snippet}
 
-<div class="justify-center-safe mx-auto flex min-h-full w-[clamp(16rem,90vw,70rem)] flex-col">
+<Screen>
 	<div class="max-h-full w-full pt-4 text-center">
 		<Card class="mx-auto w-fit">
-			<h2 class="text-3xl">Many Multiple Choice Step</h2>
+			<Title>Many Multiple Choice Step</Title>
 		</Card>
 
 		<div class="mt-4 flex flex-col gap-4 overflow-y-auto pb-4">
@@ -31,4 +33,4 @@
 			{@render button(8)}
 		</div>
 	</div>
-</div>
+</Screen>
