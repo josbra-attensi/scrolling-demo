@@ -22,15 +22,16 @@
 	type StepGroup = {
 		interactive: boolean;
 		steps: StepComponent[];
+		numberOfSelections?: number;
 	};
 
 	let stepGroups: StepGroup[] = [
 		{ steps: [Intro], interactive: true },
 		{ steps: [RichText, Info, Paragraph], interactive: false },
-		{ steps: [MultipleChoice], interactive: true },
+		{ steps: [MultipleChoice], interactive: true, numberOfSelections: 3 },
 		{ steps: [RichTextLong, RichText], interactive: false },
-		{ steps: [TrueFalse], interactive: true },
-		{ steps: [MultipleChoiceMany], interactive: true },
+		{ steps: [TrueFalse], interactive: true, numberOfSelections: 1 },
+		{ steps: [MultipleChoiceMany], interactive: true, numberOfSelections: 2 },
 		{ steps: [Summary], interactive: true }
 	];
 
@@ -79,7 +80,7 @@
 			{/if}
 		</div>
 	{/key}
-	<Footer />
+	<Footer numberOfSelections={currentStepGroup?.numberOfSelections} />
 </div>
 
 <style>
