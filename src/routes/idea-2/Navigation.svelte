@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
+
 	interface Props {
 		type: 'Top' | 'Bottom';
 		onStepComplete: () => void;
@@ -9,6 +11,7 @@
 
 <div class="flex snap-start snap-always justify-center">
 	<button
+		transition:fade
 		class="mb-4 rounded-full border border-black bg-white p-2"
 		class:mb-auto={navigationPosition === 'Top'}
 		class:mt-auto={navigationPosition === 'Bottom'}
