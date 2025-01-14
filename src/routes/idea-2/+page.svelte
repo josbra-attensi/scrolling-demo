@@ -23,12 +23,23 @@
 		interactive: boolean;
 		steps: StepComponent[];
 		numberOfSelections?: number;
+		mobileBackgroundImage?: string;
+		desktopBackgroundImage?: string;
 	};
 
 	let stepGroups: StepGroup[] = [
 		{ steps: [Intro], interactive: true },
-		{ steps: [RichText, Info, Paragraph], interactive: false },
-		{ steps: [MultipleChoice], interactive: true, numberOfSelections: 3 },
+		{
+			steps: [RichText, Info, Paragraph],
+			interactive: false,
+			mobileBackgroundImage: '/mobile-image-1.jpg'
+		},
+		{
+			steps: [MultipleChoice],
+			interactive: true,
+			numberOfSelections: 3,
+			mobileBackgroundImage: 'mobile-image-2.jpg'
+		},
 		{ steps: [RichTextLong, RichText], interactive: false },
 		{ steps: [TrueFalse], interactive: true, numberOfSelections: 1 },
 		{ steps: [MultipleChoiceMany], interactive: true, numberOfSelections: 2 },
@@ -56,7 +67,11 @@
 </script>
 
 <div
-	class="grid-layout max-h-dvh min-h-dvh w-full bg-gradient-to-t from-indigo-400 to-indigo-200 bg-fixed"
+	class="grid-layout transition-background-image max-h-dvh min-h-dvh w-full from-indigo-400 to-indigo-200 bg-fixed"
+	class:bg-gradient-to-t={!currentStepGroup?.mobileBackgroundImage}
+	style:background-image={currentStepGroup?.mobileBackgroundImage
+		? `url(${currentStepGroup?.mobileBackgroundImage})`
+		: undefined}
 >
 	<Header
 		{currentStep}
@@ -88,6 +103,11 @@
 		display: grid;
 		grid-template-rows: auto 1fr auto;
 		min-height: 100dvh;
+	}
+
+	.transition-background-image {
+		transition: background-image 0.5s;
+		transition-behavior: allow-discrete;
 	}
 
 	.fast-content {
