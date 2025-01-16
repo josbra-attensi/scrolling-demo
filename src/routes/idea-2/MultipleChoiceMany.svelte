@@ -5,9 +5,10 @@
 
 	interface Props {
 		onStepComplete: () => void;
+		associatedBackgroundImage?: string;
 	}
 
-	const { onStepComplete }: Props = $props();
+	const { onStepComplete, associatedBackgroundImage }: Props = $props();
 </script>
 
 {#snippet button(answerNumber: number)}
@@ -16,7 +17,7 @@
 	</Card>
 {/snippet}
 
-<Screen>
+<Screen backgroundImage={associatedBackgroundImage}>
 	<div class="max-h-full w-full pt-4 text-center">
 		<Card class="mx-auto w-fit">
 			<Title>Many Multiple Choice Step</Title>

@@ -5,12 +5,13 @@
 
 	interface Props {
 		onStepComplete: () => void;
+		associatedBackgroundImage?: string;
 	}
 
-	const { onStepComplete }: Props = $props();
+	const { onStepComplete, associatedBackgroundImage }: Props = $props();
 </script>
 
-<Screen>
+<Screen backgroundImage={associatedBackgroundImage}>
 	<div class="w-full text-center">
 		<Card class="mx-auto w-fit">
 			<Title>True False Step</Title>

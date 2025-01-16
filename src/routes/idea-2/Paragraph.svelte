@@ -1,10 +1,16 @@
-<script>
+<script lang="ts">
 	import Card from './Card.svelte';
 	import Screen from './Screen.svelte';
 	import Title from './Title.svelte';
+
+	interface Props {
+		associatedBackgroundImage?: string;
+	}
+
+	let { associatedBackgroundImage }: Props = $props();
 </script>
 
-<Screen snapEnabled>
+<Screen snapEnabled backgroundImage={associatedBackgroundImage}>
 	<Card>
 		<Title bottomMargin>Paragraph Step</Title>
 

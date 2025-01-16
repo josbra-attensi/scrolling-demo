@@ -5,12 +5,13 @@
 
 	interface Props {
 		onStepComplete: () => void;
+		associatedBackgroundImage?: string;
 	}
 
-	const { onStepComplete }: Props = $props();
+	const { onStepComplete, associatedBackgroundImage }: Props = $props();
 </script>
 
-<Screen>
+<Screen backgroundImage={associatedBackgroundImage}>
 	<Card>
 		<Title bottomMargin>Summary</Title>
 
