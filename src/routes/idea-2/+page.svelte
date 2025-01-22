@@ -131,7 +131,7 @@
 			id={GAME_AREA_ID}
 			in:fly={{ y: '100%', easing: cubicOut, delay: 500 }}
 			out:fly={{ y: '-100%', easing: expoIn }}
-			class="fast-content w-[100vw] snap-y snap-proximity overflow-y-auto"
+			class="fast-content w-[100vw] snap-y snap-proximity overflow-y-auto md:snap-none"
 		>
 			{#each currentStepGroup.steps as { component: StepComponent, backgroundImage }}
 				<StepComponent
