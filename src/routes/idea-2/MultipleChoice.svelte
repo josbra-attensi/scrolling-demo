@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Button from './Button.svelte';
 	import Card from './Card.svelte';
 	import Screen from './Screen.svelte';
 	import Title from './Title.svelte';
@@ -12,9 +13,7 @@
 </script>
 
 {#snippet button(answerNumber: number)}
-	<Card>
-		<button class="h-full w-full" onclick={onStepComplete}>Answer {answerNumber}</button>
-	</Card>
+	<Button class="h-full w-full" onclick={onStepComplete}>Answer {answerNumber}</Button>
 {/snippet}
 
 <Screen snapEnabled backgroundImage={associatedBackgroundImage}>

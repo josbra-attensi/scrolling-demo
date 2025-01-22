@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Button from './Button.svelte';
 	import Card from './Card.svelte';
 	import Screen from './Screen.svelte';
 	import Title from './Title.svelte';
@@ -26,8 +27,8 @@
 		</div>
 
 		<div class="mx-auto mt-4 flex w-fit gap-4">
-			<Card class="w-20"><button onclick={onStepComplete}>False</button></Card>
-			<Card class="w-20"><button onclick={onStepComplete}>True</button></Card>
+			<Button class="w-20" onclick={onStepComplete}>False</Button>
+			<Button class="w-20" onclick={onStepComplete}>True</Button>
 		</div>
 	</div>
 </Screen>
