@@ -9,7 +9,7 @@
 	const { type: navigationPosition, onStepComplete }: Props = $props();
 </script>
 
-<div class="flex snap-start snap-always justify-center">
+<div class="flex snap-start justify-center">
 	<button
 		transition:fade
 		class="mb-4 rounded-full border border-black bg-white p-2"
