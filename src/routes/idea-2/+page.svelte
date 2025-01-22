@@ -63,6 +63,19 @@
 		{ steps: [{ component: Summary }], interactive: true }
 	];
 
+	function preloadImages() {
+		let preloadImageUrls = stepGroups.flatMap((group) =>
+			group.steps
+				.map((stepData) => stepData.backgroundImage)
+				.filter((stepData) => typeof stepData === 'string')
+		);
+
+		preloadImageUrls.forEach((url) => {
+			const img = new Image();
+			img.src = url;
+		});
+	}
+
 	const GAME_AREA_ID = 'gameArea';
 
 	let observationContainer: HTMLDivElement;
@@ -78,6 +91,8 @@
 		if (dev) {
 			$inspect(backgroundState);
 		}
+
+		preloadImages();
 
 		backgroundObserver = createStepObserverManager(
 			setBackgroundImage,
