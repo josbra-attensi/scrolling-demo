@@ -11,7 +11,7 @@
 	const { onStepComplete, associatedBackgroundImage }: Props = $props();
 </script>
 
-<Screen backgroundImage={associatedBackgroundImage}>
+<Screen snapEnabled backgroundImage={associatedBackgroundImage}>
 	<div class="w-full text-center">
 		<Card class="mx-auto w-fit">
 			<Title>True False Step</Title>

@@ -17,7 +17,7 @@
 	</Card>
 {/snippet}
 
-<Screen backgroundImage={associatedBackgroundImage}>
+<Screen snapEnabled backgroundImage={associatedBackgroundImage}>
 	<div class="max-h-full w-full pt-4 text-center">
 		<Card class="mx-auto w-fit">
 			<Title>Many Multiple Choice Step</Title>

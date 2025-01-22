@@ -13,7 +13,6 @@
 	import Intro from './Intro.svelte';
 	import TrueFalse from './TrueFalse.svelte';
 	import Summary from './Summary.svelte';
-	import Navigation from './Navigation.svelte';
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
 	import { backgroundState, createStepObserverManager, setBackgroundImage } from '$lib';
@@ -27,40 +26,34 @@
 	};
 
 	type StepGroup = {
-		interactive: boolean;
 		steps: StepComponentData[];
 		numberOfSelections?: number;
 	};
 
 	let stepGroups: StepGroup[] = [
-		{ steps: [{ component: Intro }], interactive: true },
+		{ steps: [{ component: Intro }] },
 		{
 			steps: [
 				{ component: RichText, backgroundImage: '/mobile-image-1.jpg' },
 				{ component: Info, backgroundImage: '/mobile-image-2.jpg' },
-				{ component: Paragraph, backgroundImage: '/mobile-image-1.jpg' }
+				{ component: Paragraph, backgroundImage: '/mobile-image-1.jpg' },
+				{
+					component: MultipleChoice,
+					backgroundImage: '/mobile-image-2.jpg'
+				}
 			],
-			interactive: false
-		},
-		{
-			steps: [{ component: MultipleChoice, backgroundImage: '/mobile-image-2.jpg' }],
-			interactive: true,
 			numberOfSelections: 3
 		},
 		{
 			steps: [
 				{ component: RichTextLong, backgroundImage: '/mobile-image-1.jpg' },
-				{ component: RichText }
+				{ component: RichText },
+				{ component: TrueFalse, backgroundImage: '/mobile-image-2.jpg' }
 			],
-			interactive: false
-		},
-		{
-			steps: [{ component: TrueFalse, backgroundImage: '/mobile-image-2.jpg' }],
-			interactive: true,
 			numberOfSelections: 1
 		},
-		{ steps: [{ component: MultipleChoiceMany }], interactive: true, numberOfSelections: 2 },
-		{ steps: [{ component: Summary }], interactive: true }
+		{ steps: [{ component: MultipleChoiceMany }], numberOfSelections: 2 },
+		{ steps: [{ component: Summary }] }
 	];
 
 	function preloadImages() {
@@ -147,9 +140,10 @@
 				/>
 			{/each}
 
-			{#if !currentStepGroup.interactive}
-				<Navigation type="Bottom" onStepComplete={goToNextStep} />
-			{/if}
+			<!-- TODO: See if not having the bottom button to navigate is liked, if so this can be removed and interactive flag can be removed -->
+			<!-- {#if !currentStepGroup.interactive} -->
+			<!-- 	<Navigation type="Bottom" onStepComplete={goToNextStep} /> -->
+			<!-- {/if} -->
 		</div>
 	{/key}
 	<Footer numberOfSelections={currentStepGroup?.numberOfSelections} />
