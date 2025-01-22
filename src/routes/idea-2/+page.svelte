@@ -156,8 +156,8 @@
 		<div
 			id={GAME_AREA_ID}
 			bind:this={scrollableArea}
-			in:fly={{ y: '100%', easing: cubicOut, delay: 500 }}
-			out:fly={{ y: '-100%', easing: expoIn }}
+			in:fly={{ y: wasBackwardsNavigation ? '-100%' : '100%', easing: cubicOut, delay: 500 }}
+			out:fly={{ y: wasBackwardsNavigation ? '100%' : '-100%', easing: expoIn }}
 			class="fast-content w-[100vw] snap-y snap-proximity overflow-y-auto md:snap-none"
 			onoutroend={() => {
 				if (wasBackwardsNavigation) {
