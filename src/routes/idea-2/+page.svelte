@@ -71,14 +71,26 @@
 
 	const GAME_AREA_ID = 'gameArea';
 
+	let scrollableArea: HTMLDivElement | undefined = $state();
+
 	let observationContainer: HTMLDivElement;
 	let backgroundObserver: MutationObserver;
 	let currentBackgroundImage = $derived(backgroundState.currentBackgroundImage);
 
-	let currentStep = $state(0);
+	let stepState = $state({
+		previousStep: -1,
+		currentStep: 0
+	});
+	let currentStep = $derived(stepState.currentStep);
+	let previousStep = $derived(stepState.previousStep);
 	let currentStepGroup = $derived(stepGroups[currentStep]);
 	let correctPercentage = $derived(Math.round((currentStep / stepGroups.length) * 100));
 	let showBackButton = $derived(currentStep > 0);
+	let wasBackwardsNavigation = $derived(previousStep > currentStep);
+
+	$inspect(`Previous step: ${previousStep}`);
+	$inspect(`Current step: ${currentStep}`);
+	$inspect(`wasBackwardsNavigation: ${wasBackwardsNavigation}`);
 
 	onMount(() => {
 		if (dev) {
@@ -100,16 +112,30 @@
 
 	const goToPreviousStep = () => {
 		if (currentStep === 0) return;
-		currentStep -= 1;
+		stepState = {
+			previousStep: currentStep,
+			currentStep: currentStep - 1
+		};
 	};
 
 	const goToNextStep = () => {
 		if (currentStep === stepGroups.length) return;
-		currentStep += 1;
+		stepState = {
+			previousStep: currentStep,
+			currentStep: currentStep + 1
+		};
 	};
 
 	const goToStartStep = () => {
-		currentStep = 0;
+		stepState = {
+			previousStep: -1,
+			currentStep: 0
+		};
+	};
+
+	const scrollToBottom = () => {
+		if (!scrollableArea) return;
+		scrollableArea.scrollTop = scrollableArea.scrollHeight;
 	};
 </script>
 
@@ -129,9 +155,15 @@
 	{#key currentStep}
 		<div
 			id={GAME_AREA_ID}
+			bind:this={scrollableArea}
 			in:fly={{ y: '100%', easing: cubicOut, delay: 500 }}
 			out:fly={{ y: '-100%', easing: expoIn }}
 			class="fast-content w-[100vw] snap-y snap-proximity overflow-y-auto md:snap-none"
+			onoutroend={() => {
+				if (wasBackwardsNavigation) {
+					scrollToBottom();
+				}
+			}}
 		>
 			{#each currentStepGroup.steps as { component: StepComponent, backgroundImage }}
 				<StepComponent
@@ -148,8 +180,6 @@
 	{/key}
 	<Footer numberOfSelections={currentStepGroup?.numberOfSelections} />
 </div>
-
-count = $state(2) double = $derived(count * 2) count += 2
 
 <style>
 	.grid-layout {
