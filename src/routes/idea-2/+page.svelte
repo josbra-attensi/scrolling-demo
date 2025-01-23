@@ -16,6 +16,7 @@
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
 	import { backgroundState, createStepObserverManager, setBackgroundImage } from '$lib';
+	import Background from './Background.svelte';
 
 	// TODO: Can do a better job scoping this in real implementation
 	type StepComponentData = {
@@ -139,12 +140,8 @@
 	};
 </script>
 
-<div
-	class="grid-layout transition-background-image max-h-dvh min-h-dvh w-full from-indigo-400 to-indigo-200 bg-fixed"
-	class:bg-gradient-to-t={!currentBackgroundImage}
-	style:background-image={currentBackgroundImage ? `url(${currentBackgroundImage})` : undefined}
-	bind:this={observationContainer}
->
+<div class="grid-layout max-h-dvh min-h-dvh w-full" bind:this={observationContainer}>
+	<Background {currentBackgroundImage} />
 	<Header
 		{currentStep}
 		totalSteps={stepGroups.length}
@@ -171,11 +168,6 @@
 					associatedBackgroundImage={backgroundImage}
 				/>
 			{/each}
-
-			<!-- TODO: See if not having the bottom button to navigate is liked, if so this can be removed and interactive flag can be removed -->
-			<!-- {#if !currentStepGroup.interactive} -->
-			<!-- 	<Navigation type="Bottom" onStepComplete={goToNextStep} /> -->
-			<!-- {/if} -->
 		</div>
 	{/key}
 	<Footer numberOfSelections={currentStepGroup?.numberOfSelections} />
@@ -186,11 +178,6 @@
 		display: grid;
 		grid-template-rows: auto 1fr auto;
 		min-height: 100dvh;
-	}
-
-	.transition-background-image {
-		transition: background-image 0.5s;
-		transition-behavior: allow-discrete;
 	}
 
 	.fast-content {
