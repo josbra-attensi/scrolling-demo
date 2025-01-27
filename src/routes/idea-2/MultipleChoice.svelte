@@ -12,8 +12,8 @@
 	const { onStepComplete, associatedBackgroundImage }: Props = $props();
 </script>
 
-{#snippet button(answerNumber: number)}
-	<Button class="h-full w-full" onclick={onStepComplete}>Answer {answerNumber}</Button>
+{#snippet button(answer: string)}
+	<Button class="h-full w-full" onclick={onStepComplete}>{answer}</Button>
 {/snippet}
 
 <Screen snapEnabled backgroundImage={associatedBackgroundImage}>
@@ -23,10 +23,9 @@
 		</Card>
 
 		<div class="mt-4 flex flex-col gap-4">
-			{@render button(1)}
-			{@render button(2)}
-			{@render button(3)}
-			{@render button(4)}
+			{@render button('10 Billion')}
+			{@render button('1000 Billion')}
+			{@render button('100-200 Billion')}
 		</div>
 	</div>
 </Screen>

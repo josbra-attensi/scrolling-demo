@@ -5,19 +5,14 @@
 
 	interface Props {
 		associatedBackgroundImage?: string;
+		text?: string;
 	}
 
-	let { associatedBackgroundImage }: Props = $props();
+	let { associatedBackgroundImage, text }: Props = $props();
 </script>
 
 <Screen snapEnabled backgroundImage={associatedBackgroundImage}>
 	<Card>
-		<Title bottomMargin>Information Step</Title>
-
-		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam debitis asperiores pariatur
-			adipisci nisi praesentium iusto doloribus. At id sequi reprehenderit molestias consequatur
-			harum sed perferendis laboriosam, porro, magni provident.
-		</p>
+		<p class="rounded-xl bg-white p-4">{text ?? 'Fallback text'}.</p>
 	</Card>
 </Screen>

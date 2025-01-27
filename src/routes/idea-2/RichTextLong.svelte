@@ -12,42 +12,19 @@
 
 <Screen snapEnabled backgroundImage={associatedBackgroundImage}>
 	<Card class="flex flex-col gap-4">
-		<Title>Long Rich Text Step</Title>
+		<Title>The Milky Way</Title>
 
 		<p>
-			Lorem <strong>ipsum</strong> dolor sit
-			<span class="text-xl font-black">amet consectetur adipisicing</span>
-			elit. Odit obcaecati nobis animi ab perspiciatis, asperiores
-			<span class="text-red-500">totam error</span>, blanditiis cumque, <i>rem minus sunt</i> reiciendis
-			vitae 🥳. Deleniti delectus inventore dolorem officia aliquid.
-		</p>
-
-		<p>
-			Lorem <strong>ipsum</strong> dolor sit amet consectetur adipisicing elit. Odit obcaecati nobis
-			animi ab perspiciatis, asperiores
-			<span class="text-green-500">totam error</span>, blanditiis cumque, <i>rem minus sunt</i> reiciendis
-			vitae 🥳. Deleniti delectus inventore dolorem officia aliquid.
-		</p>
-
-		<p>
-			Lorem <strong>ipsum</strong> dolor sit amet consectetur adipisicing elit. Odit obcaecati nobis
-			animi ab perspiciatis, asperiores
-			<span class="text-blue-500">totam error</span>, blanditiis cumque, <i>rem minus sunt</i> reiciendis
-			vitae 🥳. Deleniti delectus inventore dolorem officia aliquid.
-		</p>
-
-		<p>
-			Lorem <strong>ipsum</strong> dolor sit amet consectetur adipisicing elit. Odit obcaecati nobis
-			animi ab perspiciatis, asperiores
-			<span class="text-yellow-500">totam error</span>, blanditiis cumque, <i>rem minus sunt</i> reiciendis
-			vitae 🥳. Deleniti delectus inventore dolorem officia aliquid.
-		</p>
-
-		<p>
-			Lorem <strong>ipsum</strong> dolor sit amet consectetur adipisicing elit. Odit obcaecati nobis
-			animi ab perspiciatis, asperiores
-			<span class="text-purple-500">totam error</span>, blanditiis cumque, <i>rem minus sunt</i> reiciendis
-			vitae 🥳. Deleniti delectus inventore dolorem officia aliquid.
+			The <strong>Milky Way</strong><span class="text-blue-500 underline">[b]</span> is the galaxy that
+			includes our Solar System, with the name describing the galaxy's appearance from Earth: a hazy
+			band of light seen in the night sky formed from stars that cannot be individually distinguished
+			by the naked eye. The term Milky Way is a translation of the Latin via lactea, from the Greek γαλακτικός
+			κύκλος (galaktikos kýklos), meaning "milky circle".[21][22][23] From Earth, the Milky Way appears
+			as a band because its disk-shaped structure is viewed from within. Galileo Galilei first resolved
+			the band of light into individual stars with his telescope in 1610. Until the early 1920s, most
+			astronomers thought that the Milky Way contained all the stars in the Universe.[24] Following the
+			1920 Great Debate between the astronomers Harlow Shapley and Heber Curtis,[25] observations by
+			Edwin Hubble showed that the Milky Way is just one of many galaxies.
 		</p>
 	</Card>
 </Screen>

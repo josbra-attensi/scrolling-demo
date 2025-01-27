@@ -21,8 +21,15 @@
 	// TODO: Can do a better job scoping this in real implementation
 	type StepComponentData = {
 		backgroundImage?: string;
+		title?: string;
+		text?: string;
 		component:
-			| Component<{ associatedBackgroundImage?: string; onStepComplete: () => void }>
+			| Component<{
+					title?: string;
+					text?: string;
+					associatedBackgroundImage?: string;
+					onStepComplete: () => void;
+			  }>
 			| Component;
 	};
 
@@ -32,23 +39,44 @@
 	};
 
 	let stepGroups: StepGroup[] = [
-		{ steps: [{ component: Intro }] },
 		{
 			steps: [
-				{ component: RichText, backgroundImage: '/mobile-image-1.jpg' },
-				{ component: Info, backgroundImage: '/mobile-image-2.jpg' },
-				{ component: Paragraph, backgroundImage: '/mobile-image-1.jpg' },
+				{
+					component: Intro,
+					title: 'The Universe',
+					text: 'A Fast about the universe. No more, no less'
+				}
+			]
+		},
+		{
+			steps: [
+				{
+					component: Info,
+					backgroundImage: '/mobile-image-2.jpg',
+					text: 'The Universe has gigantic dimensions. It contains a huge number of stars and galaxies.'
+				},
+				{
+					component: Info,
+					backgroundImage: '/mobile-image-1.jpg',
+					text: 'Numbers differ, but estimates of 100 to 200 billion different galaxies is generally accepted.'
+				},
 				{
 					component: MultipleChoice,
-					backgroundImage: '/mobile-image-2.jpg'
+					backgroundImage: '/mobile-image-2.jpg',
+					title: 'How many galaxies do scientists believe there are?'
 				}
 			],
 			numberOfSelections: 3
 		},
 		{
 			steps: [
-				{ component: RichTextLong, backgroundImage: '/mobile-image-1.jpg' },
-				{ component: RichText },
+				{
+					component: Paragraph,
+					backgroundImage: '/mobile-image-1.jpg',
+					title: 'The Earth',
+					text: 'Earth resides in the galaxy known as The Milky Way. From Earn, the galaxy appears as a hazy band of lights where the individual stars are indistinguishable from one another. This is how the galaxy got its name.'
+				},
+				{ component: RichTextLong },
 				{ component: TrueFalse, backgroundImage: '/mobile-image-2.jpg' }
 			],
 			numberOfSelections: 1
@@ -162,10 +190,12 @@
 				}
 			}}
 		>
-			{#each currentStepGroup.steps as { component: StepComponent, backgroundImage }}
+			{#each currentStepGroup.steps as { component: StepComponent, backgroundImage, title, text }}
 				<StepComponent
 					onStepComplete={StepComponent === Summary ? goToStartStep : goToNextStep}
 					associatedBackgroundImage={backgroundImage}
+					{title}
+					{text}
 				/>
 			{/each}
 		</div>
